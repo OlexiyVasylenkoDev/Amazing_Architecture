@@ -29,13 +29,3 @@ class DeleteInstanceInterface(ABC):
     @abstractmethod
     def delete_instance(self):
         pass
-
-
-class InstanceDTOInterface(ABC):
-    @abstractmethod
-    def instance_dto(self, instance):
-        pass
-
-    @abstractmethod
-    def all_instances_dto(self):
-        pass
