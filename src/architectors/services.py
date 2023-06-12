@@ -1,21 +1,12 @@
-from architectors.interfaces import ArchitectorRepositoryInterface
-from core.base_interfaces import \
-    GetInstanceInterface, \
-    GetAllInstancesInterface, \
-    CreateInstanceInterface, \
-    UpdateInstanceInterface, \
-    DeleteInstanceInterface
+from architectors.repository import ArchitectorRepository
+from core.base_interfaces import InstanceServiceInterface
 
 
-class ArchitectorServices(GetInstanceInterface,
-                          GetAllInstancesInterface,
-                          CreateInstanceInterface,
-                          UpdateInstanceInterface,
-                          DeleteInstanceInterface, ):
-
+class ArchitectorServices(InstanceServiceInterface):
+  
     def __init__(self, repository: ArchitectorRepositoryInterface):
         self.repository = repository
-
+      
     def get_instance(self, instance_id: int):
         return self.repository.get_instance(instance_id=instance_id)
 
@@ -30,3 +21,5 @@ class ArchitectorServices(GetInstanceInterface,
 
     def delete_instance(self):
         pass
+
+

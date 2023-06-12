@@ -5,9 +5,11 @@ from architectors.dto import ArchitectorDTO
 from architectors.interfaces import ArchitectorRepositoryInterface
 from architectors.models import Architector
 from core.converters import ToDTOConverter
+from core.base_interfaces import InstanceServiceInterface
 
 
-class ArchitectorRepository(ArchitectorRepositoryInterface):
+
+class ArchitectorRepository(InstanceServiceInterface):
 
     def __init__(self, converter: ToDTOConverter):
         self.converter = converter
