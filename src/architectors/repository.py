@@ -1,10 +1,21 @@
 from architectors.dto import ArchitectorDTO, CompanyDTO
 from architectors.models import Architector
-from core.base_interfaces import InstanceServiceInterface, InstanceDTOInterface
+from core.base_interfaces import \
+    GetInstanceInterface, \
+    GetAllInstancesInterface, \
+    CreateInstanceInterface, \
+    UpdateInstanceInterface, \
+    DeleteInstanceInterface, \
+    InstanceDTOInterface
 from core.converter import FromOrmToDTO
 
 
-class ArchitectorRepository(InstanceServiceInterface, InstanceDTOInterface):
+class ArchitectorRepository(GetInstanceInterface,
+                            GetAllInstancesInterface,
+                            CreateInstanceInterface,
+                            UpdateInstanceInterface,
+                            DeleteInstanceInterface,
+                            InstanceDTOInterface):
     def get_instance(self, instance_id):
         architector = Architector.objects.prefetch_related("company").get(id=instance_id)
 
