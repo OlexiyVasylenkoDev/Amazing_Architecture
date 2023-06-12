@@ -3,13 +3,15 @@ from core.base_interfaces import InstanceServiceInterface
 
 
 class ArchitectorServices(InstanceServiceInterface):
-    def get_instance(self, instance_id):
-        repo = ArchitectorRepository()
-        instance = repo.get_instance(instance_id=instance_id)
-        return instance
+  
+    def __init__(self, repository: ArchitectorRepositoryInterface):
+        self.repository = repository
+      
+    def get_instance(self, instance_id: int):
+        return self.repository.get_instance(instance_id=instance_id)
 
     def get_all_instances(self):
-        pass
+        return self.repository.get_all_instances()
 
     def create_instance(self):
         pass
